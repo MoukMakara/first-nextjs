@@ -6,8 +6,10 @@ import NavbarComponent from "@/components/navbar/NavbarComponent";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import GlobalError from "./global-error";
+import GlobalError from "./error";
 import Layout from "./layout";
+import Error from "./error";
+
 
 import { inter, suwannaphum, localCustomFont } from "./fonts";
 
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "ISTAD Ecommerce Web",
 		description: "ISTAD Ecommerce Web is a web application for selling products.",
-		images: 'https://store.istad.co/media/brand_images/sokea_AF6QosU.jpg'
+		images: 'https://api.escuelajs.co/api/v1/files/9942.jpg'
 	}
 }
 
@@ -47,7 +49,11 @@ export default function RootLayout({
           <NavbarComponent />
         </header>
 
-        <Suspense fallback={<Loading />}>{children}</Suspense>
+        <ErrorBoundary errorComponent={Error}>
+							<Suspense fallback={<Loading />}>{children}</Suspense>
+						</ErrorBoundary>
+
+        {/* <Suspense fallback={<Loading />}>{children}</Suspense> */}
       </body>
     </html>
   );

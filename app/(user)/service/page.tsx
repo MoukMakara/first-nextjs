@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const ENDPOINT = "https://fakestoreapi.com/products";
 
-export default function page() {
+export default function Service() {
   const userouter = useRouter();
   const [products, setProducts] = useState([]);
 

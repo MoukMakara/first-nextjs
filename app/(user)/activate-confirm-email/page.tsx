@@ -3,7 +3,8 @@ type Props = {
   params: {
     key: string;
   };
-  searchParams: any;
+  // searchParams: any;
+  searchParams: Record<string, string>;
 };
 
 import style from "./style.module.css";
