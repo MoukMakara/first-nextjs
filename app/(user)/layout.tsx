@@ -1,29 +1,26 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "@/app//globals.css";
 // import NavbarComponent
 import NavbarComponent from "@/components/navbar/NavbarComponent";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
-import GlobalError from "./error";
-import Layout from "./layout";
 import Error from "./error";
 
 
 import { inter, suwannaphum, localCustomFont } from "./fonts";
 
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata: Metadata = {
 	title: "ISTAD Ecommerce Web",

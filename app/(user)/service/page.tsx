@@ -4,10 +4,16 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const ENDPOINT = "https://fakestoreapi.com/products";
-
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  rating: { rate: number; count: number };
+};
 export default function Service() {
   const userouter = useRouter();
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     fetch(ENDPOINT)
@@ -250,18 +256,16 @@ export default function Service() {
         </div>
         {/* All Product Card */}
         <div className="grid grid-cols-4 grid-flow-row gap-5 mb-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((item: any, index) => {
-            return (
-              <CardProduct
-                key={index}
-                title={item.title}
-                price={item.price}
-                image={item.image}
-                rating={item.rating}
-                onClick={() => userouter.push(`/service/${item.id}`)}
-              />
-            );
-          })}
+        {products.map((item, index) => (
+        <CardProduct
+          key={index}
+          title={item.title}
+          price={item.price}
+          image={item.image}
+          rating={item.rating}
+          onClick={() => userouter.push(`/service/${item.id}`)}
+        />
+      ))}
         </div>
         {/* Button Show More */}
         <div className="w-full text-center">

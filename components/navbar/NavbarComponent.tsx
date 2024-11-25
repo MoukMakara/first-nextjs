@@ -7,7 +7,7 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menulist } from "./Menu";
 
@@ -18,25 +18,25 @@ type MenuType = {
 };
 
 export default function NavbarComponent() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const [menu, setMenu] = useState<MenuType[]>(Menulist); // menu list
 
-  // const updateMenu = (path: string) => {
-  //   const newMenu = menu.map((item) => {
-  //     if (path === item.path) {
-  //       return {
-  //         ...item,
-  //         active: true,
-  //       };
-  //     } else {
-  //       return {
-  //         ...item,
-  //         active: false,
-  //       };
-  //     }
-  //   });
-  //   setMenu(newMenu);
-  // };
+  const updateMenu = (path: string) => {
+    const newMenu = menu.map((item) => {
+      if (path === item.path) {
+        return {
+          ...item,
+          active: true,
+        };
+      } else {
+        return {
+          ...item,
+          active: false,
+        };
+      }
+    });
+    setMenu(newMenu);
+  };
   return (
     <Navbar fluid rounded>
       <NavbarBrand as={Link} href="/">
@@ -54,12 +54,12 @@ export default function NavbarComponent() {
         {menu.map((item, index) => {
           return (
             <NavbarLink
-              // onClick={() => updateMenu(item.path)}
+              onClick={() => updateMenu(item.path)}
               key={index}
               href={item.path}
               as={Link}
-              // active={item.active}
-              active={item.path === pathname}
+              active={item.active}
+              // active={item.path === pathname}
             >
               {item.name}
             </NavbarLink>
